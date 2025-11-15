@@ -7,7 +7,6 @@ func _ready() -> void:
 	Signals.connect("game_over", Callable(self, "_on_game_over"))
 
 func _on_game_over() -> void:
-	print("Finish")
 	Game.game_over = true
 
 func _full_rot() -> bool:
@@ -25,5 +24,4 @@ func _process(delta: float) -> void:
 			Signals.emit_signal("game_over")
 			return
 		PlayerStatistics.rot += 1
-		print(str(PlayerStatistics.rot) + "%")
 		_reset_timer()
