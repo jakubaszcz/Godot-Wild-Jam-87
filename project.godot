@@ -13,3 +13,7 @@ config_version=5
 config/name="rot-game"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Signals="*res://scripts/signals.gd"
