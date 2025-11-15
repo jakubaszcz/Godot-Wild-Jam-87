@@ -17,3 +17,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 Signals="*res://scripts/signals.gd"
+PlayerStatistics="*res://scripts/class/player_statistics.gd"
