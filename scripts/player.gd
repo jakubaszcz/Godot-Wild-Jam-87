@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	if Game._is_game_over(): return
 	timer += delta
 	
-	if timer >= 0.1:
+	if timer >= Game._get_rot_timer():
 		if _full_rot():
 			Signals.emit_signal("game_over")
 			return
