@@ -1,5 +1,15 @@
 extends Node
 
+# Humidity between 0 & 100%
+var humidity : int :
+	set(value):
+		humidity = clamp(value, 0, 100)
+
+# Heat between -20 & 100°
+var heat : int :
+	set(value):
+		heat = clamp(value, -20, 100)
+
 var rot_timer : float
 var game_over : bool = false
 
