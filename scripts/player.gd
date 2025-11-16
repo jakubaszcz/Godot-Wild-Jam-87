@@ -1,11 +1,15 @@
-extends Node2D
+extends Sprite2D
 
 var timer : float = 0.0
 
 func _ready() -> void:
+	_set_sprite()
 	_reset_timer()
 	Signals.connect("game_over", Callable(self, "_on_game_over"))
 	Signals.connect("rot", Callable(self, "_on_rot"))
+
+func _set_sprite() -> void:
+	self.texture = DifficultyManager._get_value("sprite")
 
 func _on_rot(value) -> void:
 	PlayerStatistics.rot = value
