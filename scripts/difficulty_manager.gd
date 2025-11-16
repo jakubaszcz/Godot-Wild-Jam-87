@@ -10,21 +10,24 @@ var data := {
 		"humidity_gap": 15,
 		"heat_gap": 15,
 		"humidity_timer": 3.0,
-		"heat_timer": 2.0
+		"heat_timer": 2.0,
+		"power_cut": false
 	},
 	Difficulty.Medium : {
 		"rot_timer": 2.0,
 		"humidity_gap": 15,
 		"heat_gap": 15,
 		"humidity_timer": 3.0,
-		"heat_timer": 2.0
+		"heat_timer": 2.0,
+		"power_cut": true
 	},
 	Difficulty.Hard : {
 		"rot_timer": 1.5,
 		"humidity_gap": 15,
 		"heat_gap": 15,
 		"humidity_timer": 3.0,
-		"heat_timer": 2.0
+		"heat_timer": 2.0,
+		"power_cut": true
 	}
 }
 
