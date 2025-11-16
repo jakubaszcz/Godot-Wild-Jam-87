@@ -22,6 +22,7 @@ func _reset_timer() -> void:
 func _process(delta: float) -> void:
 	if Game._is_game_over(): return
 	timer += delta
+	PlayerStatistics.time += delta
 	
 	if timer >= Game._get_rot_timer():
 		if _full_rot():
