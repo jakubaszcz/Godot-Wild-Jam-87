@@ -11,6 +11,9 @@ func _reset() -> void:
 	time = 0.0
 	rot = 0
 
+func _get_rot() -> int:
+	return rot
+
 func _get_sprite() -> Texture2D:
 	return current_sprite
 

@@ -3,10 +3,17 @@ extends Sprite2D
 var timer : float = 0.0
 
 func _ready() -> void:
+	_update_color()
 	_set_sprite()
 	_reset_timer()
 	Signals.connect("game_over", Callable(self, "_on_game_over"))
 	Signals.connect("rot", Callable(self, "_on_rot"))
+
+func _update_color() -> void:
+	var rot_percent = PlayerStatistics._get_rot() / 100.0
+	var start_color = Color(1, 1, 1)
+	var target_color = Color(0.0, 0.750, 0.0, 1.0)
+	self.modulate = start_color.lerp(target_color, rot_percent)
 
 func _set_sprite() -> void:
 	self.texture = DifficultyManager._get_value("sprite")
@@ -25,6 +32,9 @@ func _reset_timer() -> void:
 
 func _process(delta: float) -> void:
 	if Game._is_game_over(): return
+	
+	_update_color()
+	
 	timer += delta
 	PlayerStatistics.time += delta
 	
