@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://do32lcn8t1x3u"]
+
+[ext_resource type="PackedScene" uid="uid://cl15vtk4kvk8j" path="res://nodes/player.tscn" id="1_hneav"]
+
+[node name="Game" type="CanvasLayer"]
+
+[node name="Fruits" parent="." instance=ExtResource("1_hneav")]
