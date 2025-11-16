@@ -19,7 +19,7 @@ func _set_sprite() -> void:
 	self.texture = DifficultyManager._get_value("sprite")
 
 func _on_rot(value) -> void:
-	PlayerStatistics.rot = value
+	PlayerStatistics._set_rot(value)
 
 func _on_game_over() -> void:
 	Game.game_over = true

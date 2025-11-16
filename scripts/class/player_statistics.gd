@@ -14,6 +14,9 @@ func _reset() -> void:
 func _get_rot() -> int:
 	return rot
 
+func _set_rot(value : int) -> void:
+	rot = value
+
 func _get_sprite() -> Texture2D:
 	return current_sprite
 
