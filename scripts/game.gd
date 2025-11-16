@@ -49,14 +49,18 @@ func _process(delta: float) -> void:
 func _humidity_timer(delta : float) -> void:
 	humidity_timer += delta
 	if humidity_timer >= DifficultyManager._get_value("humidity_timer"):
-		Signals.emit_signal("humidty")
+		Signals.emit_signal("humidty", humidity + 1)
 		_reset_humidity_timer()
+		print("Humidity : " + str(humidity) + "%")
+		
 
 func _heat_timer(delta : float) -> void:
 	heat_timer += delta
 	if heat_timer >= DifficultyManager._get_value("heat_timer"):
-		Signals.emit_signal("heat")
+		Signals.emit_signal("heat", heat + 1)
 		_reset_heat_timer()
+		print("Heat : " + str(heat) + "°")
+
 
 func _is_game_over() -> bool:
 	return game_over
