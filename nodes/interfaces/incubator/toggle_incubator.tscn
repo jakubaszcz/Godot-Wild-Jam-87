@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch24nxlkfpks5"]
+
+[ext_resource type="Script" uid="uid://c07l5n0nji8oq" path="res://scripts/interfaces/incubator/toggle_incubator.gd" id="1_5qov6"]
+
+[node name="ToggleIncubator" type="Button"]
+offset_right = 50.0
+offset_bottom = 50.0
+script = ExtResource("1_5qov6")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://do32lcn8t1x3u"]
+[gd_scene load_steps=4 format=3 uid="uid://do32lcn8t1x3u"]
 
 [ext_resource type="PackedScene" uid="uid://rp5da61kro5n" path="res://nodes/instancing/player.tscn" id="1_hneav"]
 [ext_resource type="PackedScene" uid="uid://bqqn2dl4kkach" path="res://nodes/instancing/incubator.tscn" id="2_cpdmu"]
+[ext_resource type="PackedScene" uid="uid://ch24nxlkfpks5" path="res://nodes/interfaces/incubator/toggle_incubator.tscn" id="3_g5j3c"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -21,3 +22,10 @@ position = Vector2(542, 315)
 [node name="Incubator" parent="Control" instance=ExtResource("2_cpdmu")]
 position = Vector2(542, 315)
 scale = Vector2(2, 2)
+
+[node name="ToggleIncubator" parent="Control" instance=ExtResource("3_g5j3c")]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 380.0
+offset_right = 226.0
+offset_bottom = 411.0
