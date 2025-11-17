@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bagsj1cmdp7c1"]
+
+[ext_resource type="Script" uid="uid://du4d57bmwrok4" path="res://scripts/interfaces/humidity/humidity_percent.gd" id="1_6mf8j"]
+
+[node name="humidity_percent" type="Label"]
+text = "0%"
+script = ExtResource("1_6mf8j")

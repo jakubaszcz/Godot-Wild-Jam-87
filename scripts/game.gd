@@ -113,3 +113,6 @@ func _set_rot_timer(value : float) -> void:
 	
 func _get_heat() -> int:
 	return heat
+
+func _get_humidity() -> int:
+	return humidity
