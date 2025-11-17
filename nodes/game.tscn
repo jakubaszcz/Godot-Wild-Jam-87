@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://do32lcn8t1x3u"]
+[gd_scene load_steps=7 format=3 uid="uid://do32lcn8t1x3u"]
 
 [ext_resource type="PackedScene" uid="uid://rp5da61kro5n" path="res://nodes/instancing/player.tscn" id="1_hneav"]
 [ext_resource type="PackedScene" uid="uid://bqqn2dl4kkach" path="res://nodes/instancing/incubator.tscn" id="2_cpdmu"]
 [ext_resource type="PackedScene" uid="uid://ch24nxlkfpks5" path="res://nodes/interfaces/incubator/toggle_incubator.tscn" id="3_g5j3c"]
+[ext_resource type="PackedScene" uid="uid://s4gao3t4gxov" path="res://nodes/interfaces/rot/rot_timer.tscn" id="4_6hfer"]
+[ext_resource type="PackedScene" uid="uid://own2psg4amk" path="res://nodes/interfaces/rot/rot_percent.tscn" id="5_flw6b"]
+[ext_resource type="PackedScene" uid="uid://c3hs2ouqjssxi" path="res://nodes/interfaces/heat/heat_celsius.tscn" id="6_iae2t"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -29,3 +32,19 @@ offset_left = 136.0
 offset_top = 380.0
 offset_right = 226.0
 offset_bottom = 411.0
+
+[node name="rot_timer" parent="Control" instance=ExtResource("4_6hfer")]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 136.0
+offset_bottom = 48.0
+
+[node name="rot_percent" parent="Control" instance=ExtResource("5_flw6b")]
+layout_mode = 0
+
+[node name="heat_celsius" parent="." instance=ExtResource("6_iae2t")]
+offset_left = 96.0
+offset_top = 93.0
+offset_right = 126.0
+offset_bottom = 116.0

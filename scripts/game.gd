@@ -11,6 +11,7 @@ var heat : int :
 	set(value):
 		heat = clamp(value, -20, 100)
 var heat_timer : float = 0.0
+var heat_time : float
 
 var incubator : bool = false
 var is_incubate : bool = true
@@ -23,6 +24,7 @@ func _ready() -> void:
 	Signals.connect("humidty", Callable(self, "_on_humidity"))
 	Signals.connect("heat", Callable(self, "_on_heat"))
 	Signals.connect("incubate", Callable(self, "_on_incubate"))
+	Signals.connect("rot_timer", Callable(self, "_on_rot_timer"))
 	
 	_reset()
 
@@ -31,16 +33,29 @@ func _on_humidity(value) -> void:
 
 func _on_heat(value) -> void:
 	heat = value
+	
+	var equation : float = heat_time / 99
+	
+	if heat >= DifficultyManager._get_value("heat_gap"):
+		Signals.emit_signal("rot_timer", _get_rot_timer() - (equation * (heat - DifficultyManager._get_value("heat_gap") + 1)))
+
 
 func _on_incubate(value) -> void:
 	_set_incubator(value)
 	is_incubate = false
 
+func _on_rot_timer(value) -> void:
+	_set_rot_timer(value)
+	is_incubate = true
+	
 func _reset() -> void:
 	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Easy)
 	rot_timer = DifficultyManager._get_value("rot_timer")
 	_reset_humidity_timer()
 	_reset_heat_timer()
+	
+	heat_time = DifficultyManager._get_value("heat_timer")
+	
 	game_over = false
 	incubator = false
 	is_incubate = true
@@ -60,11 +75,9 @@ func _process(delta: float) -> void:
 	# print("Rot time : " + str(_get_rot_timer()))
 	
 	if _get_incubator() and not is_incubate:
-		_set_rot_timer(_get_rot_timer() * incubator_rot)
-		is_incubate = true
+		Signals.emit_signal("rot_timer", _get_rot_timer() * incubator_rot)
 	elif not _get_incubator() and not is_incubate:
-		_set_rot_timer(_get_rot_timer() / incubator_rot)
-		is_incubate = true
+		Signals.emit_signal("rot_timer", _get_rot_timer() / incubator_rot)
 	
 	_humidity_timer(delta)
 	_heat_timer(delta)
@@ -97,3 +110,6 @@ func _get_rot_timer() -> float:
 	
 func _set_rot_timer(value : float) -> void:
 	rot_timer = value
+	
+func _get_heat() -> int:
+	return heat
