@@ -8,9 +8,9 @@ radius = 4.2379236
 [node name="Fruits" type="CharacterBody2D" node_paths=PackedStringArray("sprite2D")]
 scale = Vector2(5, 5)
 script = ExtResource("1_u63mc")
-sprite2D = NodePath("FruitsSprite")
+sprite2D = NodePath("Sprite2D")
 
-[node name="FruitsSprite" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

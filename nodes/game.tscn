@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://do32lcn8t1x3u"]
+[gd_scene load_steps=3 format=3 uid="uid://do32lcn8t1x3u"]
 
 [ext_resource type="PackedScene" uid="uid://rp5da61kro5n" path="res://nodes/instancing/player.tscn" id="1_hneav"]
+[ext_resource type="PackedScene" uid="uid://bqqn2dl4kkach" path="res://nodes/instancing/incubator.tscn" id="2_cpdmu"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -16,3 +17,7 @@ size_flags_vertical = 3
 
 [node name="Fruits" parent="Control" instance=ExtResource("1_hneav")]
 position = Vector2(542, 315)
+
+[node name="Incubator" parent="Control" instance=ExtResource("2_cpdmu")]
+position = Vector2(542, 315)
+scale = Vector2(2, 2)

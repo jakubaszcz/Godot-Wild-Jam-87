@@ -22,14 +22,19 @@ var game_over : bool = false
 func _ready() -> void:
 	Signals.connect("humidty", Callable(self, "_on_humidity"))
 	Signals.connect("heat", Callable(self, "_on_heat"))
+	Signals.connect("incubate", Callable(self, "_on_incubate"))
 	
 	_reset()
 
-func _on_humidity(value):
+func _on_humidity(value) -> void:
 	humidity = value
 
-func _on_heat(value):
+func _on_heat(value) -> void:
 	heat = value
+
+func _on_incubate(value) -> void:
+	_set_incubator(value)
+	is_incubate = false
 
 func _reset() -> void:
 	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Easy)
@@ -92,3 +97,5 @@ func _get_rot_timer() -> float:
 	
 func _set_rot_timer(value : float) -> void:
 	rot_timer = value
+	
+# Input
