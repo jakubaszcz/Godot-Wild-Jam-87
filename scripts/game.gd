@@ -32,13 +32,13 @@ func _on_heat(value):
 	heat = value
 
 func _reset() -> void:
-	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Hard)
+	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Easy)
 	rot_timer = DifficultyManager._get_value("rot_timer")
 	_reset_humidity_timer()
 	_reset_heat_timer()
 	game_over = false
-	incubator = true
-	is_incubate = false
+	incubator = false
+	is_incubate = true
 
 func _reset_humidity_timer() -> void:
 	humidity_timer = 0.0
@@ -51,6 +51,8 @@ func _toggle_incubator():
 
 func _process(delta: float) -> void:
 	if _is_game_over(): return
+	
+	# print("Rot time : " + str(_get_rot_timer()))
 	
 	if _get_incubator() and not is_incubate:
 		_set_rot_timer(_get_rot_timer() * incubator_rot)
@@ -67,7 +69,6 @@ func _humidity_timer(delta : float) -> void:
 	if humidity_timer >= DifficultyManager._get_value("humidity_timer"):
 		Signals.emit_signal("humidty", humidity + 1)
 		_reset_humidity_timer()
-		print("Humidity : " + str(humidity) + "%")
 		
 
 func _heat_timer(delta : float) -> void:
@@ -75,7 +76,6 @@ func _heat_timer(delta : float) -> void:
 	if heat_timer >= DifficultyManager._get_value("heat_timer"):
 		Signals.emit_signal("heat", heat + 1)
 		_reset_heat_timer()
-		print("Heat : " + str(heat) + "°")
 
 
 func _is_game_over() -> bool:

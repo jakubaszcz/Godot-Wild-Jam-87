@@ -1,4 +1,6 @@
-extends Sprite2D
+extends CharacterBody2D
+
+@export var sprite2D : Sprite2D
 
 var timer : float = 0.0
 
@@ -13,10 +15,10 @@ func _update_color() -> void:
 	var rot_percent = PlayerStatistics._get_rot() / 100.0
 	var start_color = Color(1, 1, 1)
 	var target_color = Color(0.0, 0.750, 0.0, 1.0)
-	self.modulate = start_color.lerp(target_color, rot_percent)
+	sprite2D.modulate = start_color.lerp(target_color, rot_percent)
 
 func _set_sprite() -> void:
-	self.texture = DifficultyManager._get_value("sprite")
+	sprite2D.texture = DifficultyManager._get_value("sprite")
 
 func _on_rot(value) -> void:
 	PlayerStatistics._set_rot(value)
