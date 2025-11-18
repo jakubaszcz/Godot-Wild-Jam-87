@@ -7,12 +7,16 @@ var fuses: Array[Fuse] = []
 
 @onready var location = $CenterContainer/PanelContainer/MarginContainer/HBoxContainer
 
-var fuse_count := 5
+var fuse_count : int
 var current_index := 0
 
 
 func _ready():
+	_reset()
 	_create_fuses()
+
+func _reset() -> void:
+	fuse_count = DifficultyManager._get_value("fuses")
 
 func _create_fuses():
 	for i in fuse_count:

@@ -52,11 +52,12 @@ func _secure_value() -> void:
 
 
 func _reset() -> void:
-	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Hard)
+	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Easy)
 	rot_timer = DifficultyManager._get_value("rot_timer")
 	_reset_humidity_timer()
 	_reset_heat_timer()
 	_reset_power_cut_timer()
+	_reset_power_cut_percent()
 	
 	heat_time = DifficultyManager._get_value("heat_timer")
 	humidity_time = DifficultyManager._get_value("humidity_timer")
@@ -132,7 +133,7 @@ func _power(delta : float) -> void:
 	if Game.power_cuted: return
 	if DifficultyManager._get_value("power_cut"):
 		
-		power_cut_timer += delta		
+		power_cut_timer += delta
 		
 		if power_cut_timer >= 3.0:
 			var number = randi_range(1, 100)
@@ -172,6 +173,8 @@ func _reset_power_cut_timer() -> void:
 func _reset_power_percent_timer() -> void:
 	power_cut_percent_timer = 0.0
 
+func _reset_power_cut_percent() -> void:
+	power_cut_percent = DifficultyManager._get_value("power_cut_percent")
 
 # ───────────────────────────────────────────────────────
 # 				Toggler

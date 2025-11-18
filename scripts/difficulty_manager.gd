@@ -18,7 +18,9 @@ var data := {
 		"heat_gap": 15,
 		"humidity_timer": 3.0,
 		"heat_timer": 2.0,
-		"power_cut": true
+		"power_cut": true,
+		"power_cut_percent": 0,
+		"fuses": 3
 	},
 	Difficulty.Medium : {
 		"sprite": preload("res://assets/textures/fruits/02.png"),
@@ -27,7 +29,9 @@ var data := {
 		"heat_gap": 15,
 		"humidity_timer": 3.0,
 		"heat_timer": 2.0,
-		"power_cut": true
+		"power_cut": true,
+		"power_cut_percent": 5,
+		"fuses": 4
 	},
 	Difficulty.Hard : {
 		"sprite": preload("res://assets/textures/fruits/03.png"),
@@ -36,7 +40,9 @@ var data := {
 		"heat_gap": 15,
 		"humidity_timer": 3.0,
 		"heat_timer": 2.0,
-		"power_cut": true
+		"power_cut": true,
+		"power_cut_percent": 10,
+		"fuses": 5
 	}
 }
 
