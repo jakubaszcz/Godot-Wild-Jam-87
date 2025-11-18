@@ -1,5 +1,11 @@
 extends Node
 
+
+# ───────────────────────────────────────────────────────
+# 				Variables
+# ───────────────────────────────────────────────────────
+
+
 enum Difficulty { Easy, Medium, Hard }
 
 var current_difficulty : Difficulty = Difficulty.Easy

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://do32lcn8t1x3u"]
+[gd_scene load_steps=9 format=3 uid="uid://do32lcn8t1x3u"]
 
 [ext_resource type="PackedScene" uid="uid://rp5da61kro5n" path="res://nodes/instancing/player.tscn" id="1_hneav"]
 [ext_resource type="PackedScene" uid="uid://bqqn2dl4kkach" path="res://nodes/instancing/incubator.tscn" id="2_cpdmu"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://own2psg4amk" path="res://nodes/interfaces/rot/rot_percent.tscn" id="5_flw6b"]
 [ext_resource type="PackedScene" uid="uid://c3hs2ouqjssxi" path="res://nodes/interfaces/heat/heat_celsius.tscn" id="6_iae2t"]
 [ext_resource type="PackedScene" uid="uid://bagsj1cmdp7c1" path="res://nodes/interfaces/humidity/humidity_percent.tscn" id="7_7idfb"]
+[ext_resource type="PackedScene" uid="uid://c5ivuaypm45gn" path="res://nodes/interfaces/power/power_button.tscn" id="7_ubvaf"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -50,6 +51,13 @@ offset_left = 4.0
 offset_top = 52.0
 offset_right = 34.0
 offset_bottom = 75.0
+
+[node name="power_button" parent="Control" instance=ExtResource("7_ubvaf")]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 150.0
+offset_right = 195.0
+offset_bottom = 181.0
 
 [node name="humidity_percent" parent="." instance=ExtResource("7_7idfb")]
 offset_left = 9.0

@@ -1,5 +1,9 @@
 extends Node
 
+# ───────────────────────────────────────────────────────
+# 				Variables
+# ───────────────────────────────────────────────────────
+
 # Humidity between 0 & 100%
 var humidity : int :
 	set(value):
@@ -19,82 +23,33 @@ var is_incubate : bool = true
 var incubator_rot : float = 1.35
 
 var power_cuted : bool = false
-var power_cut_percent : int = 0
+var power_cut_percent : int = 75
 var power_cut_timer : float = 0.0
 var power_cut_percent_timer : float = 0.0
 
 var rot_timer : float
 var game_over : bool = false
 
-func _secure_value() -> void:
-	power_cut_percent = clamp(power_cut_percent, 0, 75)
+# ───────────────────────────────────────────────────────
+# 				Ready Function
+# ───────────────────────────────────────────────────────
+
 
 func _ready() -> void:
+	
 	_secure_value()
+	_reset()
 	
 	Signals.connect("humidty", Callable(self, "_on_humidity"))
 	Signals.connect("heat", Callable(self, "_on_heat"))
 	Signals.connect("incubate", Callable(self, "_on_incubate"))
 	Signals.connect("rot_timer", Callable(self, "_on_rot_timer"))
 	Signals.connect("power", Callable(self, "_on_power"))
-	
-	_reset()
-	
-	
-
-func _on_humidity(value) -> void:
-	humidity = value
-
-func _on_heat(value) -> void:
-	heat = value
-	
-	var equation : float = heat_time / 99
-	
-	if heat >= DifficultyManager._get_value("heat_gap"):
-		Signals.emit_signal("rot_timer", _get_rot_timer() - (equation * (heat - DifficultyManager._get_value("heat_gap") + 1)))
 
 
-func _on_incubate(value) -> void:
-	_set_incubator(value)
-	is_incubate = false
+func _secure_value() -> void:
+	power_cut_percent = clamp(power_cut_percent, 0, 75)
 
-func _on_rot_timer(value) -> void:
-	_set_rot_timer(value)
-	is_incubate = true
-
-func _on_power() -> void:
-	
-	if DifficultyManager._get_value("power_cut"):
-		power_cuted = not power_cuted
-		print("Power cut ? " + str(power_cuted))
-		if power_cuted:
-			heat_time *= 1.15
-			humidity_time *= 1.10
-		else:
-			heat_time /= 1.15
-			humidity_time /= 1.10
-
-func _power(delta : float) -> void:
-	power_cut_timer += delta
-	
-	if Game.power_cuted: return
-	if DifficultyManager._get_value("power_cut"):
-		
-		if power_cut_timer >= 3.0:
-			var number = randi_range(1, 100)
-		
-			if number <= power_cut_percent:
-				Signals.emit_signal("power")
-		
-			_reset_power_cut_timer()
-
-func _increase_power_percent(delta : float) -> void:
-	power_cut_percent_timer += delta
-	if Game.power_cuted: return
-	if power_cut_percent >= 75: return
-	if power_cut_percent_timer >= 3:
-		power_cut_percent += 1
-		power_cut_percent_timer = 0.0
 
 func _reset() -> void:
 	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Hard)
@@ -111,20 +66,52 @@ func _reset() -> void:
 	is_incubate = true
 	power_cuted = false
 
-func _reset_humidity_timer() -> void:
-	humidity_timer = 0.0
 
-func _reset_heat_timer() -> void:
-	heat_timer = 0.0
+# ───────────────────────────────────────────────────────
+# 				Signals Function
+# ───────────────────────────────────────────────────────
 
-func _reset_power_cut_timer() -> void:
-	power_cut_timer = 0.0
 
-func _reset_power_percent_timer() -> void:
-	power_cut_percent_timer = 0.0
+func _on_humidity(value) -> void:
+	humidity = value
 
-func _toggle_incubator():
-	incubator = not incubator
+
+func _on_heat(value) -> void:
+	heat = value
+	
+	var equation : float = heat_time / 99
+	
+	if heat >= DifficultyManager._get_value("heat_gap"):
+		Signals.emit_signal("rot_timer", _get_rot_timer() - (equation * (heat - DifficultyManager._get_value("heat_gap") + 1)))
+
+
+func _on_incubate(value) -> void:
+	_set_incubator(value)
+	is_incubate = false
+
+
+func _on_rot_timer(value) -> void:
+	_set_rot_timer(value)
+	is_incubate = true
+
+
+func _on_power() -> void:
+	
+	if DifficultyManager._get_value("power_cut"):
+		power_cuted = not power_cuted
+		print(str(power_cuted))
+		if power_cuted:
+			heat_time *= 1.15
+			humidity_time *= 1.10
+		else:
+			heat_time /= 1.15
+			humidity_time /= 1.10
+
+
+# ───────────────────────────────────────────────────────
+# 				Process
+# ───────────────────────────────────────────────────────
+
 
 func _process(delta: float) -> void:
 	if _is_game_over(): return
@@ -141,6 +128,66 @@ func _process(delta: float) -> void:
 	_power(delta)
 	_increase_power_percent(delta)
 
+
+func _power(delta : float) -> void:
+	power_cut_timer += delta
+	
+	if Game.power_cuted: return
+	if DifficultyManager._get_value("power_cut"):
+		
+		if power_cut_timer >= 3.0:
+			var number = randi_range(1, 100)
+		
+			if number <= power_cut_percent:
+				Signals.emit_signal("power")
+		
+			_reset_power_cut_timer()
+
+
+func _increase_power_percent(delta : float) -> void:
+	power_cut_percent_timer += delta
+	if Game.power_cuted: return
+	if power_cut_percent >= 75: return
+	if power_cut_percent_timer >= 3:
+		power_cut_percent += 1
+		power_cut_percent_timer = 0.0
+
+
+# ───────────────────────────────────────────────────────
+# 				Reset Function
+# ───────────────────────────────────────────────────────
+
+
+func _reset_humidity_timer() -> void:
+	humidity_timer = 0.0
+
+
+func _reset_heat_timer() -> void:
+	heat_timer = 0.0
+
+
+func _reset_power_cut_timer() -> void:
+	power_cut_timer = 0.0
+
+
+func _reset_power_percent_timer() -> void:
+	power_cut_percent_timer = 0.0
+
+
+# ───────────────────────────────────────────────────────
+# 				Toggler
+# ───────────────────────────────────────────────────────
+
+
+func _toggle_incubator():
+	incubator = not incubator
+
+
+# ───────────────────────────────────────────────────────
+# 				Timer
+# ───────────────────────────────────────────────────────
+
+
 func _humidity_timer(delta : float) -> void:
 	humidity_timer += delta
 	if humidity_timer >= DifficultyManager._get_value("humidity_timer"):
@@ -155,23 +202,47 @@ func _heat_timer(delta : float) -> void:
 		_reset_heat_timer()
 
 
+# ───────────────────────────────────────────────────────
+# 				Boolean
+# ───────────────────────────────────────────────────────
+
+
 func _is_game_over() -> bool:
 	return game_over
+
+
+# ───────────────────────────────────────────────────────
+# 				Getter-Setter
+# ───────────────────────────────────────────────────────
+
 
 func _get_incubator() -> bool:
 	return incubator
 
+
 func _set_incubator(value : bool) -> void:
 	incubator = value
 
+
 func _get_rot_timer() -> float:
 	return rot_timer
-	
+
+
 func _set_rot_timer(value : float) -> void:
 	rot_timer = value
-	
+
+
 func _get_heat() -> int:
 	return heat
 
+
 func _get_humidity() -> int:
 	return humidity
+
+
+func _get_power_cut() -> bool:
+	return power_cuted
+
+
+func _set_power_cut(value : bool) -> void:
+	power_cuted = value
