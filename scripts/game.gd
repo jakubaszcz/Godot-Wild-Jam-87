@@ -19,7 +19,9 @@ var is_incubate : bool = true
 var incubator_rot : float = 1.35
 
 var power_cuted : bool = false
-var power_cut_percent : int = 1892
+var power_cut_percent : int = 0
+var power_cut_timer : float = 0.0
+var power_cut_percent_timer : float = 0.0
 
 var rot_timer : float
 var game_over : bool = false
@@ -72,30 +74,34 @@ func _on_power() -> void:
 			heat_time /= 1.15
 			humidity_time /= 1.10
 
-func _power() -> void:
-	print(str(heat_time))
+func _power(delta : float) -> void:
+	power_cut_timer += delta
 	
 	if Game.power_cuted: return
 	if DifficultyManager._get_value("power_cut"):
 		
-		var number = randi_range(0, 100)
+		if power_cut_timer >= 3.0:
+			var number = randi_range(1, 100)
 		
-		print("Random : " + str(number))
+			if number <= power_cut_percent:
+				Signals.emit_signal("power")
 		
-		if number <= power_cut_percent:
-			Signals.emit_signal("power")
+			_reset_power_cut_timer()
 
-func _increase_power_percent() -> void:
+func _increase_power_percent(delta : float) -> void:
+	power_cut_percent_timer += delta
 	if Game.power_cuted: return
 	if power_cut_percent >= 75: return
-	if int(PlayerStatistics.time) % 3 == 0:
+	if power_cut_percent_timer >= 3:
 		power_cut_percent += 1
+		power_cut_percent_timer = 0.0
 
 func _reset() -> void:
 	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Hard)
 	rot_timer = DifficultyManager._get_value("rot_timer")
 	_reset_humidity_timer()
 	_reset_heat_timer()
+	_reset_power_cut_timer()
 	
 	heat_time = DifficultyManager._get_value("heat_timer")
 	humidity_time = DifficultyManager._get_value("humidity_timer")
@@ -103,12 +109,19 @@ func _reset() -> void:
 	game_over = false
 	incubator = false
 	is_incubate = true
+	power_cuted = false
 
 func _reset_humidity_timer() -> void:
 	humidity_timer = 0.0
 
 func _reset_heat_timer() -> void:
 	heat_timer = 0.0
+
+func _reset_power_cut_timer() -> void:
+	power_cut_timer = 0.0
+
+func _reset_power_percent_timer() -> void:
+	power_cut_percent_timer = 0.0
 
 func _toggle_incubator():
 	incubator = not incubator
@@ -125,8 +138,8 @@ func _process(delta: float) -> void:
 	
 	_humidity_timer(delta)
 	_heat_timer(delta)
-	_power()
-	_increase_power_percent()
+	_power(delta)
+	_increase_power_percent(delta)
 
 func _humidity_timer(delta : float) -> void:
 	humidity_timer += delta
