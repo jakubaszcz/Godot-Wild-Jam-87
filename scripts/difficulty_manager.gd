@@ -12,7 +12,7 @@ var data := {
 		"heat_gap": 15,
 		"humidity_timer": 3.0,
 		"heat_timer": 2.0,
-		"power_cut": false
+		"power_cut": true
 	},
 	Difficulty.Medium : {
 		"sprite": preload("res://assets/textures/fruits/02.png"),

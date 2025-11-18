@@ -19,11 +19,14 @@ var is_incubate : bool = true
 var incubator_rot : float = 1.35
 
 var power_cuted : bool = false
+var power_cut_percent : int = 75
 
 var rot_timer : float
 var game_over : bool = false
 
 func _ready() -> void:
+	print("Start : " + str(power_cut_percent))
+	
 	Signals.connect("humidty", Callable(self, "_on_humidity"))
 	Signals.connect("heat", Callable(self, "_on_heat"))
 	Signals.connect("incubate", Callable(self, "_on_incubate"))
@@ -31,6 +34,8 @@ func _ready() -> void:
 	Signals.connect("power", Callable(self, "_on_power"))
 	
 	_reset()
+	
+	
 
 func _on_humidity(value) -> void:
 	humidity = value
@@ -53,18 +58,38 @@ func _on_rot_timer(value) -> void:
 	is_incubate = true
 
 func _on_power() -> void:
+	
 	if DifficultyManager._get_value("power_cut"):
-		print("Power cut ? " + str(power_cuted))
 		power_cuted = not power_cuted
+		print("Power cut ? " + str(power_cuted))
 		if power_cuted:
-			heat *= 1.15
+			heat_time *= 1.15
 			humidity_time *= 1.10
 		else:
-			heat /= 1.15
+			heat_time /= 1.15
 			humidity_time /= 1.10
+
+func _power() -> void:
+	print(str(heat_time))
 	
+	if Game.power_cuted: return
+	if DifficultyManager._get_value("power_cut"):
+		
+		var number = randi_range(0, 100)
+		
+		print("Random : " + str(number))
+		
+		if number <= power_cut_percent:
+			Signals.emit_signal("power")
+
+func _increase_power_percent() -> void:
+	if Game.power_cuted: return
+	if power_cut_percent >= 75: return
+	if int(PlayerStatistics.time) % 3 == 0:
+		power_cut_percent += 1
+
 func _reset() -> void:
-	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Easy)
+	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Hard)
 	rot_timer = DifficultyManager._get_value("rot_timer")
 	_reset_humidity_timer()
 	_reset_heat_timer()
@@ -89,14 +114,16 @@ func _process(delta: float) -> void:
 	if _is_game_over(): return
 	
 	# print("Rot time : " + str(_get_rot_timer()))
-	
-	if _get_incubator() and not is_incubate:
-		Signals.emit_signal("rot_timer", _get_rot_timer() * incubator_rot)
-	elif not _get_incubator() and not is_incubate:
-		Signals.emit_signal("rot_timer", _get_rot_timer() / incubator_rot)
+	if power_cuted:
+		if _get_incubator() and not is_incubate:
+			Signals.emit_signal("rot_timer", _get_rot_timer() * incubator_rot)
+		elif not _get_incubator() and not is_incubate:
+			Signals.emit_signal("rot_timer", _get_rot_timer() / incubator_rot)
 	
 	_humidity_timer(delta)
 	_heat_timer(delta)
+	_power()
+	_increase_power_percent()
 
 func _humidity_timer(delta : float) -> void:
 	humidity_timer += delta

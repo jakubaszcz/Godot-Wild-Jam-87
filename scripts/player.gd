@@ -46,4 +46,3 @@ func _process(delta: float) -> void:
 			return
 		Signals.emit_signal("rot", PlayerStatistics.rot + 1)
 		_reset_timer()
-		print("Rot : " + str(PlayerStatistics.rot) + "%")
