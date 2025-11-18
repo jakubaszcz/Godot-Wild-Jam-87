@@ -19,13 +19,16 @@ var is_incubate : bool = true
 var incubator_rot : float = 1.35
 
 var power_cuted : bool = false
-var power_cut_percent : int = 75
+var power_cut_percent : int = 1892
 
 var rot_timer : float
 var game_over : bool = false
 
+func _secure_value() -> void:
+	power_cut_percent = clamp(power_cut_percent, 0, 75)
+
 func _ready() -> void:
-	print("Start : " + str(power_cut_percent))
+	_secure_value()
 	
 	Signals.connect("humidty", Callable(self, "_on_humidity"))
 	Signals.connect("heat", Callable(self, "_on_heat"))
