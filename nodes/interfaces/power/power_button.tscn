@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ivuaypm45gn"]
+
+[ext_resource type="Script" uid="uid://cmtn0x6pht0mo" path="res://scripts/interfaces/power/power_button.gd" id="1_felux"]
+
+[node name="power_button" type="Button"]
+text = "Active power"
+script = ExtResource("1_felux")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -96,7 +96,6 @@ func _on_rot_timer(value) -> void:
 
 
 func _on_power() -> void:
-	
 	if DifficultyManager._get_value("power_cut"):
 		power_cuted = not power_cuted
 		print(str(power_cuted))
