@@ -117,7 +117,7 @@ func _process(delta: float) -> void:
 	if _is_game_over(): return
 	
 	# print("Rot time : " + str(_get_rot_timer()))
-	if power_cuted:
+	if not power_cuted:
 		if _get_incubator() and not is_incubate:
 			Signals.emit_signal("rot_timer", _get_rot_timer() * incubator_rot)
 		elif not _get_incubator() and not is_incubate:
