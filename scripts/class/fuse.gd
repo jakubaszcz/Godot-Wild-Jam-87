@@ -1,39 +1,47 @@
 extends VBoxContainer
+class_name Fuse
 
-class_name fuse
+signal fuse_signal(button_id: int, valid: bool)
 
-var correct_fuse : int
-var correct_button_top : bool = false
-var correct_button_bottom : bool = false
+@export var buttons: Array[Button]
 
-@export var button_top : Button
-@export var button_bottom : Button
+var correct_button_top := false
+var correct_button_bottom := false
 
-func _ready() -> void:
-	_reset()
-	
-	correct_fuse = randi_range(0, 1)
-	
-	if !correct_fuse:
-		correct_button_top = true
+
+func _ready():
+	_generate_correct()
+	_default_buttons()
+
+
+func _generate_correct():
+	var choice := randi_range(0, 1)
+	correct_button_top = (choice == 0)
+	correct_button_bottom = (choice == 1)
+
+
+func reset_fuse():
+	_default_buttons()
+
+
+func _default_buttons():
+	for b in buttons:
+		b.modulate = Color(0.215, 0.215, 0.215, 1.0)
+
+
+func _on_parent_fuse_signal(target_index: int, button_id: int, valid: bool, my_index: int):
+	if target_index != my_index:
+		return
+
+	if valid:
+		buttons[button_id].modulate = Color(0.3, 1.0, 0.3)
 	else:
-		correct_button_bottom = true
+		buttons[button_id].modulate = Color(1.0, 0.3, 0.3)
 
 
-func _reset() -> void:
-	correct_button_top = false
-	correct_button_bottom = false
-	correct_fuse = 0
-
-func _on_button_top_pressed() -> void:
-	if correct_button_top:
-		button_top.modulate = Color(0.3, 1.0, 0.3, 1.0)
-	else:
-		button_top.modulate = Color(1.0, 0.3, 0.3, 1.0)
+func _on_button_top_pressed():
+	emit_signal("fuse_signal", 0, correct_button_top)
 
 
-func _on_button_bottom_pressed() -> void:
-	if correct_button_bottom:
-		button_bottom.modulate = Color(0.3, 1.0, 0.3, 1.0)
-	else:
-		button_bottom.modulate = Color(1.0, 0.3, 0.3, 1.0)
+func _on_button_bottom_pressed():
+	emit_signal("fuse_signal", 1, correct_button_bottom)

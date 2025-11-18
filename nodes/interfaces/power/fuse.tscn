@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://qrsbcndsbgea"]
+[gd_scene load_steps=2 format=3 uid="uid://qrsbcndsbgea"]
 
-[node name="fuse" type="VBoxContainer"]
+[ext_resource type="Script" uid="uid://sersq35qamgj" path="res://scripts/class/fuse.gd" id="1_vwk0j"]
+
+[node name="fuse" type="VBoxContainer" node_paths=PackedStringArray("buttons")]
+script = ExtResource("1_vwk0j")
+buttons = [NodePath("button_top"), NodePath("button_bottom")]
 
 [node name="button_top" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
@@ -9,3 +13,6 @@ layout_mode = 2
 [node name="button_bottom" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+
+[connection signal="pressed" from="button_top" to="." method="_on_button_top_pressed"]
+[connection signal="pressed" from="button_bottom" to="." method="_on_button_bottom_pressed"]
