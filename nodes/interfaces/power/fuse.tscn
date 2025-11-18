@@ -7,11 +7,11 @@ script = ExtResource("1_vwk0j")
 buttons = [NodePath("button_top"), NodePath("button_bottom")]
 
 [node name="button_top" type="Button" parent="."]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="button_bottom" type="Button" parent="."]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [connection signal="pressed" from="button_top" to="." method="_on_button_top_pressed"]

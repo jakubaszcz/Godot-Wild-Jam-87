@@ -1,9 +1,16 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5ivuaypm45gn"]
 
-[ext_resource type="Script" uid="uid://cmtn0x6pht0mo" path="res://scripts/interfaces/power/power_button.gd" id="1_felux"]
+[sub_resource type="GDScript" id="GDScript_4tddh"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	if Game._get_power_cut():
+		Signals.emit_signal(\"power\")
+"
 
 [node name="power_button" type="Button"]
 text = "Active power"
-script = ExtResource("1_felux")
+script = SubResource("GDScript_4tddh")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

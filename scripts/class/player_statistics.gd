@@ -14,7 +14,7 @@ func _reset() -> void:
 
 func _process(delta: float) -> void:
 	time += delta
-		
+
 
 func _get_rot() -> int:
 	return rot

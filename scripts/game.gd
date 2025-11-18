@@ -23,7 +23,7 @@ var is_incubate : bool = true
 var incubator_rot : float = 1.35
 
 var power_cuted : bool = false
-var power_cut_percent : int = 75
+var power_cut_percent : int = 0
 var power_cut_timer : float = 0.0
 var power_cut_percent_timer : float = 0.0
 
@@ -129,10 +129,10 @@ func _process(delta: float) -> void:
 
 
 func _power(delta : float) -> void:
-	power_cut_timer += delta
-	
 	if Game.power_cuted: return
 	if DifficultyManager._get_value("power_cut"):
+		
+		power_cut_timer += delta		
 		
 		if power_cut_timer >= 3.0:
 			var number = randi_range(1, 100)
