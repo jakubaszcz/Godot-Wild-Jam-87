@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://he0ux2vld2ph"]
+
+[ext_resource type="Script" uid="uid://bvb8akf2mh6eg" path="res://scripts/interfaces/humidity/humidity_evaporer.gd" id="1_gjkwd"]
+
+[node name="humidity_evaporer" type="Button"]
+custom_minimum_size = Vector2(100, 100)
+script = ExtResource("1_gjkwd")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

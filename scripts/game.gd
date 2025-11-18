@@ -242,6 +242,9 @@ func _get_humidity() -> int:
 	return humidity
 
 
+func _set_humidity(value : int) -> void:
+	humidity = value
+
 func _get_power_cut() -> bool:
 	return power_cuted
 
