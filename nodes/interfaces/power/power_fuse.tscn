@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://ohdflux3y3sy"]
+
+[ext_resource type="PackedScene" uid="uid://qrsbcndsbgea" path="res://nodes/interfaces/power/fuse.tscn" id="1_tjqag"]
+
+[node name="PowerFuse" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="fuse" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_tjqag")]
+layout_mode = 2

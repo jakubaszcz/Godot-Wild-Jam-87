@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://qrsbcndsbgea"]
+
+[node name="fuse" type="VBoxContainer"]
+
+[node name="button_top" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="button_bottom" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
