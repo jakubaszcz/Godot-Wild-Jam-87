@@ -5,6 +5,7 @@ var humidity : int :
 	set(value):
 		humidity = clamp(value, 0, 100)
 var humidity_timer : float = 0.0
+var humidity_time : float = 0.0
 
 # Heat between -20 & 100°
 var heat : int :
@@ -17,6 +18,8 @@ var incubator : bool = false
 var is_incubate : bool = true
 var incubator_rot : float = 1.35
 
+var power_cuted : bool = false
+
 var rot_timer : float
 var game_over : bool = false
 
@@ -25,6 +28,7 @@ func _ready() -> void:
 	Signals.connect("heat", Callable(self, "_on_heat"))
 	Signals.connect("incubate", Callable(self, "_on_incubate"))
 	Signals.connect("rot_timer", Callable(self, "_on_rot_timer"))
+	Signals.connect("power", Callable(self, "_on_power"))
 	
 	_reset()
 
@@ -47,6 +51,17 @@ func _on_incubate(value) -> void:
 func _on_rot_timer(value) -> void:
 	_set_rot_timer(value)
 	is_incubate = true
+
+func _on_power() -> void:
+	if DifficultyManager._get_value("power_cut"):
+		print("Power cut ? " + str(power_cuted))
+		power_cuted = not power_cuted
+		if power_cuted:
+			heat *= 1.15
+			humidity_time *= 1.10
+		else:
+			heat /= 1.15
+			humidity_time /= 1.10
 	
 func _reset() -> void:
 	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Easy)
@@ -55,6 +70,7 @@ func _reset() -> void:
 	_reset_heat_timer()
 	
 	heat_time = DifficultyManager._get_value("heat_timer")
+	humidity_time = DifficultyManager._get_value("humidity_timer")
 	
 	game_over = false
 	incubator = false
