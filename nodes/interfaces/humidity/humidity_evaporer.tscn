@@ -5,5 +5,3 @@
 [node name="humidity_evaporer" type="Button"]
 custom_minimum_size = Vector2(100, 100)
 script = ExtResource("1_gjkwd")
-
-[connection signal="button_down" from="." to="." method="_on_button_down"]
