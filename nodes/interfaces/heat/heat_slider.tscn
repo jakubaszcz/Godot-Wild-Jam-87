@@ -6,3 +6,5 @@
 offset_right = 16.0
 offset_bottom = 387.0
 script = ExtResource("1_c4of1")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

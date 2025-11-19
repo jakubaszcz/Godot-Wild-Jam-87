@@ -6,3 +6,7 @@ func _ready() -> void:
 
 func _on_heat(value) -> void:
 	self.value = value
+
+
+func _on_value_changed(value: float) -> void:
+	Signals.emit_signal("heat", int(value))
