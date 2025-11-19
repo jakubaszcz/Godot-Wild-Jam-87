@@ -23,11 +23,15 @@ var is_incubate : bool = true
 var incubator_rot : float = 1.35
 
 var power_cuted : bool = false
-var power_cut_percent : int = 0
+var power_cut_percent : int = 0 :
+	set(value): 
+		power_cut_percent = clamp(value, 0, 75)
 var power_cut_timer : float = 0.0
 var power_cut_percent_timer : float = 0.0
 
-var rot_timer : float
+var rot_timer : float :
+	set(value):
+		rot_timer = clamp(value, 0, INF)
 var game_over : bool = false
 
 # ───────────────────────────────────────────────────────
@@ -37,7 +41,6 @@ var game_over : bool = false
 
 func _ready() -> void:
 	
-	_secure_value()
 	_reset()
 	
 	Signals.connect("humidty", Callable(self, "_on_humidity"))
@@ -45,10 +48,6 @@ func _ready() -> void:
 	Signals.connect("incubate", Callable(self, "_on_incubate"))
 	Signals.connect("rot_timer", Callable(self, "_on_rot_timer"))
 	Signals.connect("power", Callable(self, "_on_power"))
-
-
-func _secure_value() -> void:
-	power_cut_percent = clamp(power_cut_percent, 0, 75)
 
 
 func _reset() -> void:
@@ -232,7 +231,6 @@ func _get_rot_timer() -> float:
 
 func _set_rot_timer(value : float) -> void:
 	rot_timer = value
-	rot_timer = clamp(rot_timer, 0, INF)
 
 
 func _get_heat() -> int:
