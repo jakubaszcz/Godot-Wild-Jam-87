@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk65ptdqk70dk"]
+
+[ext_resource type="Script" uid="uid://bqoj7grx7v7e6" path="res://scripts/interfaces/heat/heat_slider.gd" id="1_c4of1"]
+
+[node name="heat_slider" type="VSlider"]
+offset_right = 16.0
+offset_bottom = 387.0
+script = ExtResource("1_c4of1")

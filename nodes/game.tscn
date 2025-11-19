@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://do32lcn8t1x3u"]
+[gd_scene load_steps=11 format=3 uid="uid://do32lcn8t1x3u"]
 
 [ext_resource type="PackedScene" uid="uid://rp5da61kro5n" path="res://nodes/instancing/player.tscn" id="1_hneav"]
 [ext_resource type="Script" uid="uid://dlf0o0hhnjkqs" path="res://scripts/events.gd" id="1_ubvaf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c3hs2ouqjssxi" path="res://nodes/interfaces/heat/heat_celsius.tscn" id="6_iae2t"]
 [ext_resource type="PackedScene" uid="uid://bagsj1cmdp7c1" path="res://nodes/interfaces/humidity/humidity_percent.tscn" id="7_7idfb"]
 [ext_resource type="PackedScene" uid="uid://he0ux2vld2ph" path="res://nodes/interfaces/humidity/humidity_evaporer.tscn" id="8_dv0a3"]
+[ext_resource type="PackedScene" uid="uid://bk65ptdqk70dk" path="res://nodes/interfaces/heat/heat_slider.tscn" id="9_fjk5n"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -66,6 +67,13 @@ offset_left = 20.0
 offset_top = 513.0
 offset_right = 120.0
 offset_bottom = 613.0
+
+[node name="heat_slider" parent="Control" instance=ExtResource("9_fjk5n")]
+layout_mode = 0
+offset_left = 1109.0
+offset_top = 124.0
+offset_right = 1125.0
+offset_bottom = 511.0
 
 [node name="events" type="CanvasLayer" parent="."]
 script = ExtResource("1_ubvaf")
