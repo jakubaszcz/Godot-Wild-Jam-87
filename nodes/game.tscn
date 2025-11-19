@@ -27,8 +27,8 @@ size_flags_vertical = 3
 position = Vector2(542, 315)
 
 [node name="Incubator" parent="Control" instance=ExtResource("2_cpdmu")]
-position = Vector2(542, 315)
-scale = Vector2(2, 2)
+position = Vector2(542, 322.00003)
+scale = Vector2(5, 5)
 
 [node name="ToggleIncubator" parent="Control" instance=ExtResource("3_g5j3c")]
 layout_mode = 0
@@ -46,6 +46,12 @@ offset_bottom = 48.0
 
 [node name="rot_percent" parent="Control" instance=ExtResource("5_flw6b")]
 layout_mode = 0
+offset_left = 710.0
+offset_top = 325.0
+offset_right = 733.0
+offset_bottom = 348.0
+scale = Vector2(2, 2)
+theme_override_font_sizes/font_size = 100
 
 [node name="heat_celsius" parent="Control" instance=ExtResource("6_iae2t")]
 layout_mode = 0
