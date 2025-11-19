@@ -6,6 +6,9 @@ extends Control
 var difficulties = {}
 
 func _ready() -> void:
+	
+	Game._reset_game_start()
+	
 	difficulties = {
 		"easy": DifficultyManager.Difficulty.Easy,
 		"medium": DifficultyManager.Difficulty.Medium,
@@ -25,3 +28,4 @@ func _on_item_selected(index) -> void:
 
 func _on_pressed() -> void:
 	get_tree().change_scene_to_file("res://nodes/game.tscn")
+	Game._set_game_start(true)

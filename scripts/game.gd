@@ -33,6 +33,7 @@ var rot_timer : float :
 	set(value):
 		rot_timer = clamp(value, 0, INF)
 var game_over : bool = false
+var game_start : bool = false
 
 # ───────────────────────────────────────────────────────
 # 				Ready Function
@@ -113,6 +114,7 @@ func _on_power() -> void:
 
 func _process(delta: float) -> void:
 	if _is_game_over(): return
+	if not _get_game_start(): return
 	
 	# print("Rot time : " + str(_get_rot_timer()))
 	if not power_cuted:
@@ -174,6 +176,9 @@ func _reset_power_percent_timer() -> void:
 func _reset_power_cut_percent() -> void:
 	power_cut_percent = DifficultyManager._get_value("power_cut_percent")
 
+func _reset_game_start() -> void:
+	_set_game_start(false)
+
 # ───────────────────────────────────────────────────────
 # 				Toggler
 # ───────────────────────────────────────────────────────
@@ -226,6 +231,14 @@ func _set_incubator(value : bool) -> void:
 
 func _get_rot_timer() -> float:
 	return rot_timer
+
+
+func _get_game_start() -> bool:
+	return game_start
+
+
+func _set_game_start(value : bool) -> void:
+	game_start = value
 
 
 func _set_rot_timer(value : float) -> void:
