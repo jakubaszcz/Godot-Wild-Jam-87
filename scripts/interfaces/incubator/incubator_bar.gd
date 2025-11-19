@@ -8,25 +8,27 @@ func _ready() -> void:
 	Signals.connect("incubate_bar", Callable(self, "_on_incubate_bar"))
 	Signals.connect("incubate", Callable(self, "_on_incubate"))
 	
-	time = 0.0
+	_reset_time()
 	self.value = 100
+
+func _reset_time() -> void:
+	time = 0.0
 
 func _on_incubate_bar(value) -> void:
 	self.value = value
+	if _get_percent() <= 0:
+		Signals.emit_signal("incubate", false)
 
 func _on_incubate(value) -> void:
 	start = value
 
 func _process(delta: float) -> void:
-		print("satrt ? " + str(start))
 		if start:
 			time += delta
 	
-			print("Percent : " + str(_get_percent()))
-	
 			if time >= timer:
 				Signals.emit_signal("incubate_bar", (_get_percent() - 1))
-				time = 0.0
+				_reset_time()
 
 
 func _set_percent(value : int) -> void:
