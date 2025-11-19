@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="rot-game"
-run/main_scene="uid://do32lcn8t1x3u"
+run/main_scene="uid://ucttag6usimq"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -51,7 +51,6 @@ func _ready() -> void:
 
 
 func _reset() -> void:
-	DifficultyManager._set_difficulty(DifficultyManager.Difficulty.Hard)
 	rot_timer = DifficultyManager._get_value("rot_timer")
 	_reset_humidity_timer()
 	_reset_heat_timer()

@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://ucttag6usimq"]
+
+[ext_resource type="Script" uid="uid://csf1mb6fyhca2" path="res://scripts/menu.gd" id="1_01rij"]
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("dropdown", "button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_01rij")
+dropdown = NodePath("BoxContainer/VBoxContainer/difficulties_box/OptionButton")
+button = NodePath("BoxContainer/VBoxContainer/play_box/Button")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -46.5
+offset_right = 129.0
+offset_bottom = 46.5
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="difficulties_box" type="VBoxContainer" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BoxContainer/VBoxContainer/difficulties_box"]
+layout_mode = 2
+text = "Choose difficulty"
+
+[node name="OptionButton" type="OptionButton" parent="BoxContainer/VBoxContainer/difficulties_box"]
+layout_mode = 2
+
+[node name="play_box" type="VBoxContainer" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="BoxContainer/VBoxContainer/play_box"]
+layout_mode = 2
+text = "Play"
