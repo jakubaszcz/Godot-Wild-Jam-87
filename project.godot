@@ -24,7 +24,6 @@ Game="*res://scripts/game.gd"
 
 [display]
 
-window/size/mode=1
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

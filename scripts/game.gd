@@ -232,6 +232,7 @@ func _get_rot_timer() -> float:
 
 func _set_rot_timer(value : float) -> void:
 	rot_timer = value
+	rot_timer = clamp(rot_timer, 0, INF)
 
 
 func _get_heat() -> int:
