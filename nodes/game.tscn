@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://do32lcn8t1x3u"]
+[gd_scene load_steps=12 format=3 uid="uid://do32lcn8t1x3u"]
 
 [ext_resource type="PackedScene" uid="uid://rp5da61kro5n" path="res://nodes/instancing/player.tscn" id="1_hneav"]
 [ext_resource type="Script" uid="uid://dlf0o0hhnjkqs" path="res://scripts/events.gd" id="1_ubvaf"]
 [ext_resource type="PackedScene" uid="uid://bqqn2dl4kkach" path="res://nodes/instancing/incubator.tscn" id="2_cpdmu"]
+[ext_resource type="PackedScene" uid="uid://dj3ng47ctyicx" path="res://nodes/interfaces/menu/game_over.tscn" id="2_ff8ca"]
 [ext_resource type="PackedScene" uid="uid://ch24nxlkfpks5" path="res://nodes/interfaces/incubator/toggle_incubator.tscn" id="3_g5j3c"]
 [ext_resource type="PackedScene" uid="uid://s4gao3t4gxov" path="res://nodes/interfaces/rot/rot_timer.tscn" id="4_6hfer"]
 [ext_resource type="PackedScene" uid="uid://own2psg4amk" path="res://nodes/interfaces/rot/rot_percent.tscn" id="5_flw6b"]
@@ -12,6 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://bk65ptdqk70dk" path="res://nodes/interfaces/heat/heat_slider.tscn" id="9_fjk5n"]
 
 [node name="Game" type="CanvasLayer"]
+
+[node name="events" type="CanvasLayer" parent="." node_paths=PackedStringArray("game_over_interface")]
+layer = 5
+script = ExtResource("1_ubvaf")
+game_over_interface = NodePath("game_over")
+
+[node name="game_over" parent="events" instance=ExtResource("2_ff8ca")]
+visible = false
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -80,7 +89,3 @@ offset_left = 1109.0
 offset_top = 124.0
 offset_right = 1125.0
 offset_bottom = 511.0
-
-[node name="events" type="CanvasLayer" parent="."]
-layer = 5
-script = ExtResource("1_ubvaf")

@@ -8,6 +8,7 @@ func _ready() -> void:
 	_update_color()
 	_set_sprite()
 	_reset_timer()
+	PlayerStatistics._set_rot(0)
 	Signals.connect("game_over", Callable(self, "_on_game_over"))
 	Signals.connect("rot", Callable(self, "_on_rot"))
 

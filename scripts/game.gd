@@ -61,6 +61,9 @@ func _reset() -> void:
 	heat_time = DifficultyManager._get_value("heat_timer")
 	humidity_time = DifficultyManager._get_value("humidity_timer")
 	
+	_set_humidity(0)
+	_set_heat(0)
+	
 	game_over = false
 	incubator = false
 	is_incubate = true
@@ -116,7 +119,6 @@ func _process(delta: float) -> void:
 	if _is_game_over(): return
 	if not _get_game_start(): return
 	
-	# print("Rot time : " + str(_get_rot_timer()))
 	if not power_cuted:
 		if _get_incubator() and not is_incubate:
 			Signals.emit_signal("rot_timer", _get_rot_timer() * incubator_rot)
@@ -247,6 +249,9 @@ func _set_rot_timer(value : float) -> void:
 
 func _get_heat() -> int:
 	return heat
+
+func _set_heat(value : int) -> void:
+	heat = value
 
 
 func _get_humidity() -> int:

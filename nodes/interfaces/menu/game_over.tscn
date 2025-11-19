@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj3ng47ctyicx"]
+
+[ext_resource type="Script" uid="uid://b5p0tj1y3bg0d" path="res://scripts/interfaces/menu/game_over.gd" id="1_ef770"]
+
+[node name="game_over" type="Control" node_paths=PackedStringArray("time", "difficulty", "restart_button", "menu_button", "quit_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ef770")
+time = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Time")
+difficulty = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Difficulty")
+restart_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/restart")
+menu_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/menu")
+quit_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/quit")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Time"
+
+[node name="Difficulty" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Difficulty"
+
+[node name="restart" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="menu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Menu"
+
+[node name="quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
