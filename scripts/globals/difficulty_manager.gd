@@ -49,5 +49,16 @@ var data := {
 func _set_difficulty(difficulty : Difficulty):
 	current_difficulty = difficulty
 
+func _get_difficulty_format(difficulty : Difficulty) -> String:
+	match difficulty:
+		Difficulty.Easy:
+			return "easy"
+		Difficulty.Medium:
+			return "medium"
+		Difficulty.Hard:
+			return "hard"
+	return ""
+
+
 func _get_value(key : String):
 	return data[current_difficulty].get(key)
