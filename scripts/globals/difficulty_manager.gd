@@ -20,7 +20,9 @@ var data := {
 		"heat_timer": 2.0,
 		"power_cut": true,
 		"power_cut_percent": 0,
-		"fuses": 3
+		"fuses": 3,
+		"bulb_timer": 5.0,
+		"bulb_percent": 10
 	},
 	Difficulty.Medium : {
 		"sprite": preload("res://assets/textures/fruits/02.png"),
@@ -31,7 +33,9 @@ var data := {
 		"heat_timer": 2.0,
 		"power_cut": true,
 		"power_cut_percent": 5,
-		"fuses": 4
+		"fuses": 4,
+		"bulb_timer": 4.0,
+		"bulb_percent": 15
 	},
 	Difficulty.Hard : {
 		"sprite": preload("res://assets/textures/fruits/03.png"),
@@ -42,7 +46,9 @@ var data := {
 		"heat_timer": 2.0,
 		"power_cut": true,
 		"power_cut_percent": 10,
-		"fuses": 5
+		"fuses": 5,
+		"bulb_timer": 5.0,
+		"bulb_percent": 25
 	}
 }
 
