@@ -21,6 +21,7 @@ var heat_time : float
 var incubator : bool = false
 var is_incubate : bool = true
 var incubator_rot : float = 1.35
+var incubator_state : bool = false
 
 var power_cuted : bool = false
 var power_cut_percent : int = 0 :
@@ -181,6 +182,10 @@ func _reset_power_cut_percent() -> void:
 func _reset_game_start() -> void:
 	_set_game_start(false)
 
+
+func _reset_incubator_state() -> void:
+	incubator_state = false
+
 # ───────────────────────────────────────────────────────
 # 				Toggler
 # ───────────────────────────────────────────────────────
@@ -267,3 +272,10 @@ func _get_power_cut() -> bool:
 
 func _set_power_cut(value : bool) -> void:
 	power_cuted = value
+
+func _set_incubator_state(value : bool) -> void:
+	incubator_state = value
+
+
+func _get_incubator_state() -> bool:
+	return incubator_state

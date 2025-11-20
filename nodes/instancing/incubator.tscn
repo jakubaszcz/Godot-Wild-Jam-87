@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqqn2dl4kkach"]
+[gd_scene load_steps=6 format=3 uid="uid://bqqn2dl4kkach"]
 
 [ext_resource type="Script" uid="uid://cgn8vurd61hfq" path="res://scripts/incubator.gd" id="1_5cpff"]
 [ext_resource type="Texture2D" uid="uid://dwj320ukh6o2w" path="res://assets/textures/incubator/incubator.png" id="2_fbdhf"]
 [ext_resource type="PackedScene" uid="uid://cucgrmt60cpv1" path="res://nodes/interfaces/incubator/incubator_state.tscn" id="3_fbdhf"]
+[ext_resource type="Texture2D" uid="uid://cepcrnc4wc4x7" path="res://assets/textures/incubator/incubator_broken.png" id="3_iwkho"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cpff"]
 radius = 58.0517
 
 [node name="Incubator" type="CharacterBody2D"]
 script = ExtResource("1_5cpff")
+incubator_texture_intact = ExtResource("2_fbdhf")
+incubator_texture_broken = ExtResource("3_iwkho")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5cpff")

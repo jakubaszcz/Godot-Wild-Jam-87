@@ -34,7 +34,7 @@ func _reset_time() -> void:
 func _on_incubate_bar(value) -> void:
 	progress_bar.value = value
 	if _get_percent() <= 0:
-		Signals.emit_signal("incubate", false)
+		Game._set_incubator_state(true)
 
 func _on_incubate(value) -> void:
 	start = value
@@ -52,6 +52,8 @@ func _process(delta: float) -> void:
 			time += delta
 			if time >= timer:
 				Signals.emit_signal("incubate_bar", _get_percent() - 1)
+				if _get_percent() >= 25 and Game._get_incubator_state():
+					Game._set_incubator_state(false)
 				_reset_time()
 
 func _on_hold():
