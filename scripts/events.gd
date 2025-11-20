@@ -4,11 +4,12 @@ var power_interface_scene : PackedScene = preload("res://nodes/interfaces/power/
 var power_instance: Node = null
 
 @export var game_over_interface : Control
+@export var game_control : Control
 
 func _ready() -> void:
 	Signals.connect("power", Callable(self, "_on_power"))
 	Signals.connect("game_over", Callable(self, "_on_game_over"))
-	
+	game_control.visible = true
 
 func _on_power() -> void:
 	if Game._get_power_cut():
@@ -17,6 +18,7 @@ func _on_power() -> void:
 		_hide_power_interface()
 
 func _on_game_over() -> void:
+	game_control.visible = false
 	game_over_interface.visible = true
 
 func _show_power_interface():

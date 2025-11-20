@@ -5,6 +5,7 @@ extends CharacterBody2D
 var timer : float = 0.0
 
 func _ready() -> void:
+	PlayerStatistics._reset()
 	_update_color()
 	_set_sprite()
 	_reset_timer()
@@ -37,6 +38,9 @@ func _process(delta: float) -> void:
 	if Game._is_game_over(): return
 	
 	_update_color()
+	
+	
+	PlayerStatistics.time += delta
 	
 	timer += delta
 	PlayerStatistics.time += delta

@@ -43,6 +43,8 @@ func _reset() -> void:
 	_reset_power_cut_timer()
 	_reset_power_cut_percent()
 	
+	PlayerStatistics._reset()
+	
 	_set_heat_time(DifficultyManager._get_value("heat_timer"))
 	_set_humidity_time(DifficultyManager._get_value("humidity_timer"))
 	

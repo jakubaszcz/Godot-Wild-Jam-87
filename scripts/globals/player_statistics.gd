@@ -12,9 +12,6 @@ func _reset() -> void:
 	time = 0.0
 	rot = 0
 
-func _process(delta: float) -> void:
-	time += delta
-
 
 func _get_rot() -> int:
 	return rot

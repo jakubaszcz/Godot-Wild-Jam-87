@@ -14,10 +14,11 @@
 
 [node name="Game" type="CanvasLayer"]
 
-[node name="events" type="CanvasLayer" parent="." node_paths=PackedStringArray("game_over_interface")]
+[node name="events" type="CanvasLayer" parent="." node_paths=PackedStringArray("game_over_interface", "game_control")]
 layer = 5
 script = ExtResource("1_ubvaf")
 game_over_interface = NodePath("game_over")
+game_control = NodePath("../Control")
 
 [node name="game_over" parent="events" instance=ExtResource("2_ff8ca")]
 visible = false
