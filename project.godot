@@ -22,11 +22,25 @@ PlayerStatistics="*res://scripts/class/player_statistics.gd"
 Game="*res://scripts/game.gd"
 DifficultyManager="*res://scripts/globals/difficulty_manager.gd"
 
+[compression]
+
+formats/zstd/long_distance_matching=true
+
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[input]
+
+click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(206, 10),"global_position":Vector2(213, 47),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true

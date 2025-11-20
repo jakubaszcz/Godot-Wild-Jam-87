@@ -19,7 +19,7 @@ var data := {
 		"humidity_timer": 3.0,
 		"heat_timer": 2.0,
 		"power_cut": true,
-		"power_cut_percent": 75,
+		"power_cut_percent": 0,
 		"fuses": 3
 	},
 	Difficulty.Medium : {
