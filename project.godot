@@ -28,6 +28,7 @@ formats/zstd/long_distance_matching=true
 
 [display]
 
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

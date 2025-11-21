@@ -6,12 +6,12 @@ extends Node
 # ───────────────────────────────────────────────────────
 
 
-enum Difficulty { Easy, Medium, Hard }
+enum Difficulty { Normal, Medium, Hard }
 
-var current_difficulty : Difficulty = Difficulty.Easy
+var current_difficulty : Difficulty = Difficulty.Normal
 
 var data := {
-	Difficulty.Easy : {
+	Difficulty.Normal : {
 		"sprite": preload("res://assets/textures/fruits/01.png"),
 		"rot_timer": 3.0,
 		"humidity_gap": 15,
@@ -57,8 +57,8 @@ func _set_difficulty(difficulty : Difficulty):
 
 func _get_difficulty_format(difficulty : Difficulty) -> String:
 	match difficulty:
-		Difficulty.Easy:
-			return "easy"
+		Difficulty.Normal:
+			return "normal"
 		Difficulty.Medium:
 			return "medium"
 		Difficulty.Hard:

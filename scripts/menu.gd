@@ -10,7 +10,7 @@ func _ready() -> void:
 	Game._reset_game_start()
 	
 	difficulties = {
-		"easy": DifficultyManager.Difficulty.Easy,
+		"normal": DifficultyManager.Difficulty.Normal,
 		"medium": DifficultyManager.Difficulty.Medium,
 		"hard": DifficultyManager.Difficulty.Hard,
 	}
