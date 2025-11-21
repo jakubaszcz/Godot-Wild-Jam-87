@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch24nxlkfpks5"]
+[gd_scene load_steps=4 format=3 uid="uid://ch24nxlkfpks5"]
 
 [ext_resource type="Script" uid="uid://c07l5n0nji8oq" path="res://scripts/interfaces/incubator/toggle_incubator.gd" id="1_5qov6"]
+[ext_resource type="Texture2D" uid="uid://8wj108fx3lbf" path="res://assets/textures/incubator/incubator_button_disable.png" id="1_ybs4b"]
+[ext_resource type="Texture2D" uid="uid://c5qxhug2tmex5" path="res://assets/textures/incubator/incubator_button_enable.png" id="2_enrow"]
 
-[node name="ToggleIncubator" type="Button"]
-offset_right = 50.0
-offset_bottom = 50.0
+[node name="ToggleIncubator" type="TextureButton"]
+offset_right = 16.0
+offset_bottom = 16.0
+texture_normal = ExtResource("1_ybs4b")
+texture_pressed = ExtResource("2_enrow")
 script = ExtResource("1_5qov6")
+on_texture = ExtResource("2_enrow")
+off_texture = ExtResource("1_ybs4b")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

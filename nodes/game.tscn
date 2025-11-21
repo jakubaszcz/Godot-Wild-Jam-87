@@ -44,10 +44,11 @@ scale = Vector2(5, 5)
 
 [node name="ToggleIncubator" parent="Control" instance=ExtResource("3_g5j3c")]
 layout_mode = 0
-offset_left = 136.0
-offset_top = 380.0
-offset_right = 226.0
-offset_bottom = 411.0
+offset_left = 416.99997
+offset_top = 332.00003
+offset_right = 432.99997
+offset_bottom = 348.00003
+scale = Vector2(5, 5)
 
 [node name="rot_timer" parent="Control" instance=ExtResource("4_6hfer")]
 layout_mode = 0
