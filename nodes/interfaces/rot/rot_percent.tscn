@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://own2psg4amk"]
+
+[ext_resource type="Script" uid="uid://b20w66poyn0lc" path="res://scripts/interfaces/rot/rot_percent.gd" id="1_5prhr"]
+[ext_resource type="FontFile" uid="uid://c6k7te7okywvq" path="res://assets/fonts/ari-w9500-bold.ttf" id="3_48jgj"]
+
+[node name="rot_percent" type="Label"]
+offset_right = 28.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_48jgj")
+theme_override_font_sizes/font_size = 286
+text = "0%"
+script = ExtResource("1_5prhr")

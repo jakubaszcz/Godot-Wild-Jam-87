@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://358bxvq2qhjh"]
+
+[ext_resource type="Texture2D" uid="uid://cbpbuknr1jmj4" path="res://assets/textures/bulb/untitled.png" id="1_hqnth"]
+[ext_resource type="PackedScene" uid="uid://own2psg4amk" path="res://nodes/interfaces/rot/rot_percent.tscn" id="2_6xcvu"]
+
+[node name="rot_interface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 16.0
+texture = ExtResource("1_hqnth")
+stretch_mode = 2
+
+[node name="rot_percent" parent="." instance=ExtResource("2_6xcvu")]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 4.0
+offset_right = 761.0
+offset_bottom = 368.0
+scale = Vector2(0.02, 0.02)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://s4gao3t4gxov"]
+
+[ext_resource type="Script" uid="uid://dbq1xxw30oqhe" path="res://scripts/interfaces/rot/rot_timer.gd" id="1_5prhr"]
+
+[node name="RotTimer" type="Label"]
+text = "1% per X seconds"
+script = ExtResource("1_5prhr")
