@@ -8,10 +8,12 @@ var is_pressed := false
 var hold_cooldown := 0.2
 var current_cooldown := 0.0
 
-@export var progress_bar : ProgressBar
-@export var button : Button
+@export var progress_bar : TextureProgressBar
+@export var button : TextureButton
 
 func _ready() -> void:
+	self.visible = false
+	
 	Signals.connect("incubate_bar", Callable(self, "_on_incubate_bar"))
 	Signals.connect("incubate", Callable(self, "_on_incubate"))
 	
@@ -37,6 +39,7 @@ func _on_incubate_bar(value) -> void:
 		Game._set_incubator_state(true)
 
 func _on_incubate(value) -> void:
+	self.visible = value
 	start = value
 
 func _process(delta: float) -> void:

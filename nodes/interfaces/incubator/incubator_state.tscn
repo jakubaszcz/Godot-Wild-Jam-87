@@ -1,21 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://cucgrmt60cpv1"]
+[gd_scene load_steps=6 format=3 uid="uid://cucgrmt60cpv1"]
 
 [ext_resource type="Script" uid="uid://blti76qn8peti" path="res://scripts/interfaces/incubator/incubator_state.gd" id="1_ux1ex"]
+[ext_resource type="Texture2D" uid="uid://bp8deo2415wll" path="res://assets/textures/incubator/progress_bar_back.png" id="2_nv4cp"]
+[ext_resource type="Texture2D" uid="uid://deglg7n3wmtn4" path="res://assets/textures/incubator/button_nomal.png" id="4_g5ggx"]
+[ext_resource type="Texture2D" uid="uid://crval6tchbssp" path="res://assets/textures/incubator/progress_bar_fill.png" id="4_vsgmu"]
+[ext_resource type="Texture2D" uid="uid://764p2h0sn8m4" path="res://assets/textures/incubator/button_pressed.png" id="5_vsgmu"]
 
 [node name="incubator_state" type="HBoxContainer" node_paths=PackedStringArray("progress_bar", "button")]
 offset_right = 394.0
 offset_bottom = 27.0
 scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 0
 script = ExtResource("1_ux1ex")
-progress_bar = NodePath("ProgressBar")
-button = NodePath("Button")
+progress_bar = NodePath("TextureProgressBar")
+button = NodePath("TextureButton")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(250, 0)
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("2_nv4cp")
+texture_progress = ExtResource("4_vsgmu")
 
-[node name="Button" type="Button" parent="."]
+[node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
-text = "Repair"
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+texture_normal = ExtResource("4_g5ggx")
+texture_pressed = ExtResource("5_vsgmu")

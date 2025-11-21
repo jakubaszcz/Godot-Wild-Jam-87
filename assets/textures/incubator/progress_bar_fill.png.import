@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6j2famv3tqre"
-path="res://.godot/imported/wire_bulb.png-bbc22147d979cf9db901ac1f490864ff.ctex"
+uid="uid://crval6tchbssp"
+path="res://.godot/imported/progress_bar_fill.png-1484b9328ab73a4814ec4c9c418b9643.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/incubator/wire_bulb.png"
-dest_files=["res://.godot/imported/wire_bulb.png-bbc22147d979cf9db901ac1f490864ff.ctex"]
+source_file="res://assets/textures/incubator/progress_bar_fill.png"
+dest_files=["res://.godot/imported/progress_bar_fill.png-1484b9328ab73a4814ec4c9c418b9643.ctex"]
 
 [params]
 
