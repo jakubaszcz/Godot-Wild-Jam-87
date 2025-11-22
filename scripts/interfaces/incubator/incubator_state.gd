@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-var timer : float = 0.5
+var timer : float = 0.1
 var time : float = 0.0
 var start : bool = false
 
@@ -44,6 +44,13 @@ func _on_incubate(value) -> void:
 
 func _process(delta: float) -> void:
 	if Game._get_power_cut(): return
+	if Game._get_incubator_state(): 
+		if button:
+			button.queue_free()
+		if progress_bar:
+			progress_bar.queue_free()
+			Game.is_incubate = false
+		return
 
 	if is_pressed:
 		current_cooldown -= delta
@@ -51,6 +58,7 @@ func _process(delta: float) -> void:
 			current_cooldown = hold_cooldown
 			_on_hold()
 	else:
+		if _get_percent() == 0: return
 		if start:
 			time += delta
 			if time >= timer:
