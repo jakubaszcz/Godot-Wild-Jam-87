@@ -10,13 +10,21 @@ var humidity : int :
 		humidity = clamp(value, 0, 100)
 var humidity_timer : float = 0.0
 var humidity_time : float = 0.0
+var humidity_base_rot : float
+var humidity_old_result : float
+var humidity_new_result : float 
+var humidity_bonus : float = 0.01
 
 # Heat between -20 & 100°
 var heat : int :
 	set(value):
-		heat = clamp(value, -20, 100)
+		heat = clamp(value, 0, 100)
 var heat_timer : float = 0.0
 var heat_time : float
+var heat_base_rot : float
+var heat_old_result : float
+var heat_new_result : float 
+var heat_bonus : float = 0.01
 
 var incubator : bool = false
 var is_incubate : bool = true
@@ -69,6 +77,14 @@ func _reset() -> void:
 	incubator = false
 	is_incubate = true
 	power_cuted = false
+	
+	heat_base_rot = DifficultyManager._get_value("rot_timer")
+	heat_old_result = 0.0
+	heat_new_result = 0.0
+	
+	humidity_base_rot = DifficultyManager._get_value("rot_timer")
+	humidity_old_result = 0.0
+	humidity_new_result = 0.0 
 
 
 # ───────────────────────────────────────────────────────
@@ -78,15 +94,41 @@ func _reset() -> void:
 
 func _on_humidity(value) -> void:
 	humidity = value
+	
+	var effective_humidity : float = max(0, heat - DifficultyManager._get_value("humidity_gap"))
+
+	var target_rot : float = humidity_base_rot - (humidity_bonus * effective_humidity)
+
+	if humidity_new_result == 0.0:
+		humidity_old_result = humidity_base_rot
+	else:
+		humidity_old_result = humidity_new_result
+	humidity_new_result = target_rot
+
+	var loss_this_tick : float = humidity_old_result - humidity_new_result
+
+	var new_timer : float = _get_rot_timer() - loss_this_tick
+	
+	Signals.emit_signal("rot_timer", new_timer)
 
 
 func _on_heat(value) -> void:
 	heat = value
-	
-	var equation : float = heat_time / 99
-	
-	if heat >= DifficultyManager._get_value("heat_gap"):
-		Signals.emit_signal("rot_timer", _get_rot_timer() - (equation * (heat - DifficultyManager._get_value("heat_gap") + 1)))
+
+	var effective_heat : float = max(0, heat - DifficultyManager._get_value("heat_gap"))
+
+	var target_rot : float = heat_base_rot - (heat_bonus * effective_heat)
+
+	if heat_new_result == 0.0:
+		heat_old_result = heat_base_rot
+	else:
+		heat_old_result = heat_new_result
+	heat_new_result = target_rot
+
+	var loss_this_tick : float = heat_old_result - heat_new_result
+
+	var new_timer : float = _get_rot_timer() - loss_this_tick
+	Signals.emit_signal("rot_timer", new_timer)
 
 
 func _on_incubate(value) -> void:
@@ -102,13 +144,6 @@ func _on_rot_timer(value) -> void:
 func _on_power() -> void:
 	if DifficultyManager._get_value("power_cut"):
 		power_cuted = not power_cuted
-		print(str(power_cuted))
-		if power_cuted:
-			heat_time *= 1.15
-			humidity_time *= 1.10
-		else:
-			heat_time /= 1.15
-			humidity_time /= 1.10
 
 
 # ───────────────────────────────────────────────────────
