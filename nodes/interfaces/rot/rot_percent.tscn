@@ -7,6 +7,6 @@
 offset_right = 28.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("3_48jgj")
-theme_override_font_sizes/font_size = 286
+theme_override_font_sizes/font_size = 300
 text = "0%"
 script = ExtResource("1_5prhr")

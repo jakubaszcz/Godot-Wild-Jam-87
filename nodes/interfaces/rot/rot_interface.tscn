@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://358bxvq2qhjh"]
 
-[ext_resource type="Texture2D" uid="uid://cbpbuknr1jmj4" path="res://assets/textures/bulb/untitled.png" id="1_hqnth"]
+[ext_resource type="Texture2D" uid="uid://c8g4dqeng2j1w" path="res://assets/textures/interfaces/rot_interface.png" id="1_hqnth"]
 [ext_resource type="PackedScene" uid="uid://own2psg4amk" path="res://nodes/interfaces/rot/rot_percent.tscn" id="2_6xcvu"]
 
 [node name="rot_interface" type="Control"]

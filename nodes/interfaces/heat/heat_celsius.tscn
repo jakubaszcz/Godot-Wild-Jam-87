@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3hs2ouqjssxi"]
+[gd_scene load_steps=3 format=3 uid="uid://c3hs2ouqjssxi"]
 
 [ext_resource type="Script" uid="uid://j2ioupahbyac" path="res://scripts/interfaces/heat/heat_celsius.gd" id="1_tfdj6"]
+[ext_resource type="FontFile" uid="uid://c6k7te7okywvq" path="res://assets/fonts/ari-w9500-bold.ttf" id="1_vtpm3"]
 
 [node name="heat_celsius" type="Label"]
+theme_override_fonts/font = ExtResource("1_vtpm3")
+theme_override_font_sizes/font_size = 300
 text = "O°C"
 script = ExtResource("1_tfdj6")

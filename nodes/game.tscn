@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://do32lcn8t1x3u"]
+[gd_scene load_steps=11 format=3 uid="uid://do32lcn8t1x3u"]
 
 [ext_resource type="PackedScene" uid="uid://rp5da61kro5n" path="res://nodes/instancing/player.tscn" id="1_hneav"]
 [ext_resource type="Script" uid="uid://dlf0o0hhnjkqs" path="res://scripts/events.gd" id="1_ubvaf"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ch24nxlkfpks5" path="res://nodes/interfaces/incubator/toggle_incubator.tscn" id="3_g5j3c"]
 [ext_resource type="PackedScene" uid="uid://he0ux2vld2ph" path="res://nodes/interfaces/humidity/humidity_evaporer.tscn" id="8_dv0a3"]
 [ext_resource type="PackedScene" uid="uid://bk65ptdqk70dk" path="res://nodes/interfaces/heat/heat_slider.tscn" id="9_fjk5n"]
+[ext_resource type="PackedScene" uid="uid://bdcp3ek1hsckn" path="res://nodes/interfaces/heat/heat_interface.tscn" id="10_fjk5n"]
 [ext_resource type="PackedScene" uid="uid://358bxvq2qhjh" path="res://nodes/interfaces/rot/rot_interface.tscn" id="12_b11oy"]
 [ext_resource type="PackedScene" uid="uid://cthcg08jfas03" path="res://nodes/instancing/bulb.tscn" id="12_uodeg"]
 
@@ -47,13 +48,6 @@ offset_right = 432.99997
 offset_bottom = 348.00003
 scale = Vector2(5, 5)
 
-[node name="humidity_evaporer" parent="Control" instance=ExtResource("8_dv0a3")]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 513.0
-offset_right = 120.0
-offset_bottom = 613.0
-
 [node name="heat_slider" parent="Control" instance=ExtResource("9_fjk5n")]
 layout_mode = 0
 offset_left = 1109.0
@@ -62,7 +56,7 @@ offset_right = 1125.0
 offset_bottom = 511.0
 
 [node name="Bulb" parent="Control" instance=ExtResource("12_uodeg")]
-position = Vector2(539, 102.00001)
+position = Vector2(539, 120)
 scale = Vector2(5, 5)
 
 [node name="rot_interface" parent="." instance=ExtResource("12_b11oy")]
@@ -70,4 +64,18 @@ offset_left = -10.0
 offset_top = 73.0
 offset_right = -10.0
 offset_bottom = 73.0
+scale = Vector2(5, 5)
+
+[node name="humidity_evaporer" parent="." instance=ExtResource("8_dv0a3")]
+offset_left = 5.000002
+offset_top = 563.0
+offset_right = 21.000002
+offset_bottom = 579.0
+scale = Vector2(5, 5)
+
+[node name="HeatInterface" parent="." instance=ExtResource("10_fjk5n")]
+offset_left = -14.999993
+offset_top = 153.00002
+offset_right = 25.000008
+offset_bottom = 172.00002
 scale = Vector2(5, 5)

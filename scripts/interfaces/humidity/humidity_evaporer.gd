@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 var is_pressed := false
 var hold_cooldown := 0.2
