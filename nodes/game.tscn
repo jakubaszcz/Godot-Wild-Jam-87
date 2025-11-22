@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://do32lcn8t1x3u"]
+[gd_scene load_steps=12 format=3 uid="uid://do32lcn8t1x3u"]
 
 [ext_resource type="PackedScene" uid="uid://rp5da61kro5n" path="res://nodes/instancing/player.tscn" id="1_hneav"]
 [ext_resource type="Script" uid="uid://dlf0o0hhnjkqs" path="res://scripts/events.gd" id="1_ubvaf"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://he0ux2vld2ph" path="res://nodes/interfaces/humidity/humidity_evaporer.tscn" id="8_dv0a3"]
 [ext_resource type="PackedScene" uid="uid://bk65ptdqk70dk" path="res://nodes/interfaces/heat/heat_slider.tscn" id="9_fjk5n"]
 [ext_resource type="PackedScene" uid="uid://bdcp3ek1hsckn" path="res://nodes/interfaces/heat/heat_interface.tscn" id="10_fjk5n"]
+[ext_resource type="PackedScene" uid="uid://b12bbs1ts0l4r" path="res://nodes/interfaces/humidity/humidity_interface.tscn" id="11_ff8ca"]
 [ext_resource type="PackedScene" uid="uid://358bxvq2qhjh" path="res://nodes/interfaces/rot/rot_interface.tscn" id="12_b11oy"]
 [ext_resource type="PackedScene" uid="uid://cthcg08jfas03" path="res://nodes/instancing/bulb.tscn" id="12_uodeg"]
 
@@ -79,3 +80,10 @@ offset_top = 153.00002
 offset_right = 25.000008
 offset_bottom = 172.00002
 scale = Vector2(5, 5)
+
+[node name="humidity_interface" parent="." instance=ExtResource("11_ff8ca")]
+offset_left = -4.000001
+offset_top = 233.99998
+offset_right = -4.000001
+offset_bottom = 233.99998
+scale = Vector2(1.7, 1.7)
