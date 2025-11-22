@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdcp3ek1hsckn"]
+
+[ext_resource type="Texture2D" uid="uid://ww6nkpmrd7py" path="res://assets/textures/icons/thermometer.png" id="1_gkqs7"]
+[ext_resource type="PackedScene" uid="uid://c3hs2ouqjssxi" path="res://nodes/interfaces/heat/heat_celsius.tscn" id="2_73p5f"]
+
+[node name="HeatInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 438.0
+offset_bottom = 256.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 256.0
+texture = ExtResource("1_gkqs7")
+stretch_mode = 2
+
+[node name="heat_celsius" parent="." instance=ExtResource("2_73p5f")]
+layout_mode = 0
+offset_left = 13.0
+offset_top = -1.0
+offset_right = 640.0
+offset_bottom = 382.0
+scale = Vector2(0.02, 0.02)
