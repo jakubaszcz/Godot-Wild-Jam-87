@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b12bbs1ts0l4r"]
+
+[ext_resource type="Texture2D" uid="uid://dqsvbq0xkfw7m" path="res://assets/textures/bulb/drop.png" id="1_sdji8"]
+[ext_resource type="PackedScene" uid="uid://bagsj1cmdp7c1" path="res://nodes/interfaces/humidity/humidity_percent.tscn" id="2_86ir6"]
+
+[node name="humidity_interface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_sdji8")
+
+[node name="humidity_percent" parent="." instance=ExtResource("2_86ir6")]
+layout_mode = 0
+offset_left = 41.999996
+offset_top = -1.9999998
+offset_right = 560.0
+offset_bottom = 381.0
+scale = Vector2(0.05, 0.05)

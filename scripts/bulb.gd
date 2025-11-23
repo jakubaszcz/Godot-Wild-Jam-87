@@ -25,6 +25,7 @@ func _ready() -> void:
 func _on_power() -> void:
 	if not Game._get_power_cut(): return
 	if toggle:
+		Signals.emit_signal("bulb_break")
 		toggle = false
 		changed = false
 		_update_bulb()
@@ -39,6 +40,7 @@ func _process(delta: float) -> void:
 	if not toggle: return
 	time += delta
 	if time >= timer:
+		Signals.emit_signal("bulb_break")
 		toggle = false
 		changed = false
 		time = 0.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://do32lcn8t1x3u"]
+[gd_scene load_steps=15 format=3 uid="uid://do32lcn8t1x3u"]
 
 [ext_resource type="PackedScene" uid="uid://rp5da61kro5n" path="res://nodes/instancing/player.tscn" id="1_hneav"]
 [ext_resource type="Script" uid="uid://dlf0o0hhnjkqs" path="res://scripts/events.gd" id="1_ubvaf"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://b12bbs1ts0l4r" path="res://nodes/interfaces/humidity/humidity_interface.tscn" id="11_ff8ca"]
 [ext_resource type="PackedScene" uid="uid://358bxvq2qhjh" path="res://nodes/interfaces/rot/rot_interface.tscn" id="12_b11oy"]
 [ext_resource type="PackedScene" uid="uid://cthcg08jfas03" path="res://nodes/instancing/bulb.tscn" id="12_uodeg"]
+[ext_resource type="Script" uid="uid://6u5bs4ny15i2" path="res://scripts/sound_effect.gd" id="13_b11oy"]
+[ext_resource type="AudioStream" uid="uid://o810d3tn84op" path="res://assets/sounds/power_cut.wav" id="15_15wb7"]
 
 [node name="Game" type="CanvasLayer"]
 
@@ -95,3 +97,15 @@ offset_top = 233.99998
 offset_right = -4.000001
 offset_bottom = 233.99998
 scale = Vector2(1.7, 1.7)
+
+[node name="sound_effect" type="Control" parent="." node_paths=PackedStringArray("audio_player")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_b11oy")
+power_cut = ExtResource("15_15wb7")
+audio_player = NodePath("AudioStreamPlayer2D")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="sound_effect"]
+volume_db = 1.0
