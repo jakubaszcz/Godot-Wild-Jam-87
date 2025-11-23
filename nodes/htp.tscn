@@ -1,12 +1,18 @@
-[gd_scene format=3 uid="uid://c2uig0n7x6tj7"]
+[gd_scene load_steps=3 format=3 uid="uid://c2uig0n7x6tj7"]
 
-[node name="Htp" type="Control"]
+[ext_resource type="Script" uid="uid://dnx68mvbhr7li" path="res://scripts/htp.gd" id="1_uyj54"]
+[ext_resource type="Texture2D" uid="uid://d2jcksnnwy0jf" path="res://assets/htp/main.png" id="2_itgc8"]
+
+[node name="Htp" type="Control" node_paths=PackedStringArray("imager", "descriptor")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uyj54")
+imager = NodePath("TextureRect")
+descriptor = NodePath("description")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(1000, 500)
@@ -15,14 +21,17 @@ offset_left = 81.0
 offset_top = 40.0
 offset_right = 1081.0
 offset_bottom = 540.0
+texture = ExtResource("2_itgc8")
+expand_mode = 1
 
 [node name="description" type="Label" parent="."]
 layout_mode = 0
 offset_left = 132.0
-offset_top = 508.0
+offset_top = 529.0
 offset_right = 969.0
-offset_bottom = 622.0
-text = "idfhsjhff"
+offset_bottom = 619.0
+text = "djfkdbkjfbhsdfhgsdfhgdsfghusdfsdbfbdhsbfhsdfdhvfgdvsfgvdsgfvgdvsgfdsfsdfhsfsdfdsvfgdvsgfvsfgsdfsdfsdhfvgsdvfgdvsg"
+autowrap_mode = 1
 
 [node name="info" type="Label" parent="."]
 layout_mode = 0

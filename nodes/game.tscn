@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://do32lcn8t1x3u"]
+[gd_scene load_steps=14 format=3 uid="uid://do32lcn8t1x3u"]
 
 [ext_resource type="PackedScene" uid="uid://rp5da61kro5n" path="res://nodes/instancing/player.tscn" id="1_hneav"]
 [ext_resource type="Script" uid="uid://dlf0o0hhnjkqs" path="res://scripts/events.gd" id="1_ubvaf"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dj3ng47ctyicx" path="res://nodes/interfaces/menu/game_over.tscn" id="2_ff8ca"]
 [ext_resource type="PackedScene" uid="uid://ch24nxlkfpks5" path="res://nodes/interfaces/incubator/toggle_incubator.tscn" id="3_g5j3c"]
 [ext_resource type="PackedScene" uid="uid://he0ux2vld2ph" path="res://nodes/interfaces/humidity/humidity_evaporer.tscn" id="8_dv0a3"]
-[ext_resource type="PackedScene" uid="uid://s4gao3t4gxov" path="res://nodes/interfaces/rot/rot_timer.tscn" id="8_uodeg"]
 [ext_resource type="PackedScene" uid="uid://bk65ptdqk70dk" path="res://nodes/interfaces/heat/heat_slider.tscn" id="9_fjk5n"]
 [ext_resource type="PackedScene" uid="uid://bdcp3ek1hsckn" path="res://nodes/interfaces/heat/heat_interface.tscn" id="10_fjk5n"]
 [ext_resource type="PackedScene" uid="uid://b12bbs1ts0l4r" path="res://nodes/interfaces/humidity/humidity_interface.tscn" id="11_ff8ca"]
@@ -62,13 +61,6 @@ offset_bottom = 511.0
 [node name="Bulb" parent="Control" instance=ExtResource("12_uodeg")]
 position = Vector2(539, 120)
 scale = Vector2(5, 5)
-
-[node name="RotTimer" parent="Control" instance=ExtResource("8_uodeg")]
-layout_mode = 0
-offset_left = 208.0
-offset_top = 305.0
-offset_right = 343.0
-offset_bottom = 328.0
 
 [node name="rot_interface" parent="." instance=ExtResource("12_b11oy")]
 offset_left = -10.0
