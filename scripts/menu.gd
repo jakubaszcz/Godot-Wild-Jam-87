@@ -13,6 +13,8 @@ signal click
 
 var difficulties = {}
 
+var type : bool = false
+
 func _ready() -> void:
 	
 	self.connect("click", Callable(self, "_on_click"))
@@ -37,12 +39,22 @@ func _on_item_selected(index) -> void:
 	DifficultyManager._set_difficulty(difficulties[key])
 
 func _on_pressed() -> void:
+	type = true
 	timer.start()
 
 func _on_delay_finished() -> void:
-	get_tree().change_scene_to_file("res://nodes/game.tscn")
-	Game._set_game_start(true)   # ← assurez‑vous que la classe Game est chargée
+	if type:
+		_play()
+	else:
+		_htp()
 
+func _htp() -> void:
+	get_tree().change_scene_to_file("res://nodes/htp.tscn")
+
+func _play() -> void:
+	print("sdfdf")
+	get_tree().change_scene_to_file("res://nodes/game.tscn")
+	Game._set_game_start(true)
 
 func _on_option_button_pressed() -> void:
 	self.emit_signal("click")
@@ -58,3 +70,10 @@ func _on_click() -> void:
 	if sound.playing:
 		sound.stop()
 	sound.play()
+
+
+func _on_htp_pressed() -> void:
+	type = false
+	self.emit_signal("click")
+	timer.start()
+	

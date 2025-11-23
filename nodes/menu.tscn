@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_01rij")
 dropdown = NodePath("BoxContainer/VBoxContainer/difficulties_box/OptionButton")
-button = NodePath("BoxContainer/VBoxContainer/play_box/Button")
+button = NodePath("BoxContainer/VBoxContainer/play_box/play")
 click_sound = ExtResource("2_ab7ik")
 sound = NodePath("AudioStreamPlayer2D")
 timer = NodePath("Timer")
@@ -43,13 +43,19 @@ layout_mode = 2
 [node name="play_box" type="VBoxContainer" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="BoxContainer/VBoxContainer/play_box"]
+[node name="htp" type="Button" parent="BoxContainer/VBoxContainer/play_box"]
+layout_mode = 2
+text = "How to play"
+
+[node name="play" type="Button" parent="BoxContainer/VBoxContainer/play_box"]
 layout_mode = 2
 text = "Play"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
 
 [connection signal="pressed" from="BoxContainer/VBoxContainer/difficulties_box/OptionButton" to="." method="_on_option_button_pressed"]
-[connection signal="pressed" from="BoxContainer/VBoxContainer/play_box/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/play_box/htp" to="." method="_on_htp_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/play_box/play" to="." method="_on_button_pressed"]

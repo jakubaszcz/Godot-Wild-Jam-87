@@ -1,6 +1,6 @@
 extends Node
 
-signal bulb_break
+signal bulb_break()
 signal game_over
 signal humidty(value)
 signal heat(value)
