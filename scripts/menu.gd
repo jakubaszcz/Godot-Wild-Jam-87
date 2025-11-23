@@ -1,12 +1,22 @@
 extends Control
 
+signal click
+
 @export var dropdown : OptionButton
 @export var button : Button
+
+@export var click_sound : AudioStream
+
+@export var sound : AudioStreamPlayer2D
+
+@export var timer : Timer
 
 var difficulties = {}
 
 func _ready() -> void:
 	
+	self.connect("click", Callable(self, "_on_click"))
+	timer.timeout.connect(_on_delay_finished)
 	Game._reset_game_start()
 	
 	difficulties = {
@@ -27,5 +37,24 @@ func _on_item_selected(index) -> void:
 	DifficultyManager._set_difficulty(difficulties[key])
 
 func _on_pressed() -> void:
+	timer.start()
+
+func _on_delay_finished() -> void:
 	get_tree().change_scene_to_file("res://nodes/game.tscn")
-	Game._set_game_start(true)
+	Game._set_game_start(true)   # ← assurez‑vous que la classe Game est chargée
+
+
+func _on_option_button_pressed() -> void:
+	self.emit_signal("click")
+	
+
+
+func _on_button_pressed() -> void:
+	self.emit_signal("click")
+
+
+func _on_click() -> void:
+	sound.stream = click_sound
+	if sound.playing:
+		sound.stop()
+	sound.play()
